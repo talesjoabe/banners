@@ -18,7 +18,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    BANNER
+                    BANNER's
                 </div>
 
                 <div class="links">

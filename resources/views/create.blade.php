@@ -21,6 +21,9 @@
                     <br>
                     <button type="submit" class="btn btn-primary">Criar Banner</button>
                 </form>
+
+                {{--<button type="submit" class="btn btn-primary" href="{{ route('banners.index')}} ">Voltar</button>--}}
+
             </div>
         </div>
     </div>
