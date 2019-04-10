@@ -23,7 +23,7 @@
 
                 <div class="links">
                     <a href="{{ route('banners.create') }}">Criar Banner</a>
-                    <a href="#">Ordenar Banner</a>
+                    <a href="{{route('banners.index')}}">Banner's</a>
                 </div>
             </div>
         </div>

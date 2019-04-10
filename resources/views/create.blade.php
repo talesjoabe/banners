@@ -8,22 +8,15 @@
             </div>
 
             <div class="links">
-                <form method="post" action="#">
+                <form method="post" action="{{route('banners.store')}}">
                     <div class="form-group">
                         @csrf
                         <label>Banner Name:</label>
-                        <input type="text" class="form-control" name="bannerName"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Banner HTML:</label>
-                        <input type="file" class="form-control" name="fileName"/>
+                        <input type="text" class="form-control" name="name"/>
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Criar Banner</button>
                 </form>
-
-                {{--<button type="submit" class="btn btn-primary" href="{{ route('banners.index')}} ">Voltar</button>--}}
-
             </div>
         </div>
     </div>

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use Illuminate\Auth\GuardHelpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class BannerController extends Controller
 {
+    use GuardHelpers;
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +37,19 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Banner $banner)
     {
-        //
+        $validateData = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+
+        ]);
+
+
+            $banner->name = $request->get('name');
+            $banner->save();
+
+            return redirect('/banners')->with('success', 'Banner cadastrado com sucesso!');
+
     }
 
     /**
