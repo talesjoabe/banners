@@ -11,8 +11,11 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+// Página Inicial
+Route::get('/', 'BannerController@home');
 
+// Banners
 Route::resource('banners', 'BannerController');
+
+//Banners Itens
+Route::get('banners/itens/{banner}', 'BannerItensController@create');

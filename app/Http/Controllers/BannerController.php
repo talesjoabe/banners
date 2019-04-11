@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 class BannerController extends Controller
 {
     use GuardHelpers;
+
+    public function home()
+    {
+        return view('welcome');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,9 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $banners = Banner::all();
+
+        return view('banners', compact('banners'));
     }
 
     /**
@@ -48,7 +55,7 @@ class BannerController extends Controller
             $banner->name = $request->get('name');
             $banner->save();
 
-            return redirect('/banners')->with('success', 'Banner cadastrado com sucesso!');
+            return redirect('/')->with('status', 'Banner cadastrado com sucesso!');
 
     }
 

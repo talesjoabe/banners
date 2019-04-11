@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBannersTable extends Migration
+class CreateBannerItensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('banner_itens', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('banner_id')->unsigned();
             $table->string('name');
+            $table->string('filename');
             $table->timestamps();
+
+            $table->foreign('banner_id')->references('id')->on('banners');
         });
     }
 
@@ -27,6 +31,10 @@ class CreateBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banners');
+        Schema::table('banner_itens', function (Blueprint $table) {
+            $table->dropForeign(['banner_id']);
+        });
+        
+        Schema::dropIfExists('banner_itens');
     }
 }

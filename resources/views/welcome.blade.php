@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('conteudo')
+        @if (session('status'))
+                <div class="flex-center alert alert-success">
+                      {{ session('status') }}
+                </div>
+        @endif
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -15,7 +20,7 @@
                     @endauth
                 </div>
             @endif
-
+            
             <div class="content">
                 <div class="title m-b-md">
                     BANNER's
