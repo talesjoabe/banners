@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\BannerItens;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -24,8 +25,9 @@ class BannerController extends Controller
     public function index()
     {
         $banners = Banner::all();
+        $bannersItens = BannerItens::all();
 
-        return view('banners', compact('banners'));
+        return view('banners', compact('banners', 'bannersItens'));
     }
 
     /**
@@ -102,5 +104,10 @@ class BannerController extends Controller
     public function destroy(Banner $banner)
     {
         //
+    }
+
+    public function teste()
+    {
+        return view('includeHtmls');
     }
 }

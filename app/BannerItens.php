@@ -12,6 +12,6 @@ class BannerItens extends Model
 
     public function banner(): BelongsTo
     {
-        return $this->belongsTo(Banner::class);
+        return $this->belongsTo(Banner::class, 'banner_id');
     }
 }

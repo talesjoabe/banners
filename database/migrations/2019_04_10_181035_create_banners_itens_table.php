@@ -13,9 +13,15 @@ class CreateBannersItensTable extends Migration
      */
     public function up()
     {
-        Schema::create('banners_itens', function (Blueprint $table) {
+        Schema::create('banner_itens', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('banner_id')->unsigned();
+            $table->string('name');
+            $table->string('filename');
+            $table->integer('seconds')->unsigned();
             $table->timestamps();
+
+            $table->foreign('banner_id')->references('id')->on('banners');
         });
     }
 
@@ -26,6 +32,10 @@ class CreateBannersItensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banners_itens');
+        Schema::table('banner_itens', function (Blueprint $table) {
+            $table->dropForeign(['banner_id']);
+        });
+
+        Schema::dropIfExists('banner_itens');
     }
 }

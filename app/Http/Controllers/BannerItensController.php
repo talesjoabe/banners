@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class BannerItensController extends Controller
 {
     use GuardHelpers;
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,38 +27,29 @@ class BannerItensController extends Controller
 
         $validateData = Validator::make(array_merge($request->all(), ['banner_id' => $banner->id]), [
             'name' => 'required|string|max:255',
-            'banner_id' => 'required|integer|exists:banners,id'
+            'banner_id' => 'required|integer|exists:banners,id',
+            'seconds' => 'required|integer'
         ]);
-        
         $bannerItens->name = $request->get('name');
         $bannerItens->banner_id = $banner->id;
-       
-        if($request->hasFile('filename'))
+        $bannerItens->seconds = $request->get('seconds');
+
+        if($request->hasfile('filename'))
         {
             $file = $request->file('filename');
             $name=time().$file->getClientOriginalName();
-            $mover = $file->move_uploaded_file($name, );         
-            if($file->move_uploaded_file($name, public_path()))
+            if($file->move(public_path().'/files/', $name))
             {
-                $fileMovido = true;
                 $bannerItens->filename = $name;
+                $bannerItens->save();
 
+              return redirect('banners')->with('status', 'Item Banner cadastrado com sucesso!');
             }
             else {
-                $fileMovido = false;
+                return redirect('banners')->with('error', 'Erro ao cadastrar item!');
             }
         }
 
 
-        if($fileMovido){
-           $bannerItens->save();
-            
-           return redirect('banners')->with('status', 'Item Banner cadastrado com sucesso!'); 
-       }
-       else {
-            return redirect('banners')->with('status', 
-            'bla' ); 
-
-       }
     }
 }

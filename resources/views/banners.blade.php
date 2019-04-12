@@ -9,7 +9,11 @@
          <div class="card-body">
             <h5 class="card-title font-weight-bold" style="color: black;">Banners Apresentados</h5>
             <ul class="list-group list-group-flush">
-               <li class="list-group-item">Cras justo odio</li>               
+                @foreach($bannersItens as $item)
+                    @if($item['banner_id'] == $banner['id'])
+                        <li class="list-group-item"><span class="font-weight-bold"> {{$item['name']}}</span> por {{$item['seconds']}} segundos.</li>
+                    @endif
+                @endforeach
             </ul>
             <br/>
             <a href="{{ url('banners/itens', $banner['id'])}}" class="btn btn-primary">Adicionar Item</a>
