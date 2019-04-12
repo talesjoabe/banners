@@ -15,7 +15,7 @@
                         <label>Item Banner Name:</label>
                         <input type="text" class="form-control" name="name"/>
                         <label>Item Banner HTML:</label>
-                        <input type="file" class="form-control" name="name"/>
+                        <input type="file" class="form-control" name="filename"/>
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Criar Item Banner</button>

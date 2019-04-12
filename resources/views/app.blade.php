@@ -70,6 +70,11 @@
 </head>
 <body>
 <div class="container">
+    @if (session('status'))
+                <div class="flex-center alert alert-success">
+                      {{ session('status') }}
+                </div>
+    @endif
     @yield('conteudo')
 </div>
 
