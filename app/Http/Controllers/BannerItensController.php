@@ -37,8 +37,9 @@ class BannerItensController extends Controller
         if($request->hasfile('filename'))
         {
             $file = $request->file('filename');
-            $name=time().$file->getClientOriginalName();
-            if($file->move(public_path().'/files/', $name))
+            $htmlOnlyName = explode('.html', $file->getClientOriginalName());
+            $name= time(). $htmlOnlyName[0] . '.blade.php';
+            if($file->move(base_path().'/resources/views/htmls/', $name))
             {
                 $bannerItens->filename = $name;
                 $bannerItens->save();

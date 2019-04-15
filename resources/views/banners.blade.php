@@ -16,7 +16,8 @@
                 @endforeach
             </ul>
             <br/>
-            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn btn-primary">Adicionar Item</a>
+            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn btn-primary">Adicionar Item</a>        <a href="{{ url('teste', $banner['id'])}}" class="btn btn-success">Ativar Banner</a>
+
          </div>
          <div class="card-footer text-muted" style="color: black;">
             Criado em {{$banner['created_at']}}.

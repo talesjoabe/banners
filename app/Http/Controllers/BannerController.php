@@ -106,8 +106,10 @@ class BannerController extends Controller
         //
     }
 
-    public function teste()
+    public function teste(Banner $banner)
     {
-        return view('includeHtmls');
+        $bannersItens = BannerItens::where('banner_id', '=', $banner->id)->get();
+
+        return view('includeHtmls', compact('bannersItens'));
     }
 }

@@ -20,4 +20,4 @@ Route::resource('banners', 'BannerController');
 //Banners Itens
 Route::get('banners/itens/{banner}', 'BannerItensController@createForm');
 Route::post('banners/itens/{banner}', 'BannerItensController@createItem');
-Route::get('teste', 'BannerController@teste');
+Route::get('teste/{banner}', 'BannerController@teste');
