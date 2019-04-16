@@ -32,7 +32,7 @@ class BannerItensController extends Controller
         ]);
         $bannerItens->name = $request->get('name');
         $bannerItens->banner_id = $banner->id;
-        $bannerItens->seconds = $request->get('seconds');
+        $bannerItens->seconds = $request->get('seconds') * 1000;
 
         if($request->hasfile('filename'))
         {
