@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('conteudo')
+    <br/>
+    <div>
+        <a href="{{ url('/')}}" class="btn btn-light">Voltar</a>
+    </div>
+    <br/>
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">

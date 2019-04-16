@@ -2,13 +2,18 @@
 @extends('app')
 
 @section('conteudo')
+    <br/>
+    <div>
+        <a href="{{ url('banners')}}" class="btn btn-light">Voltar</a>
+    </div>
+    <br/>
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
                 CRIAR ITEM BANNER {{$id_banner}}
             </div>
     
-            <div class="links flex-center">
+            <div class="links flex-center border rounded">
                 <form method="post" action="{{ url('banners/itens', $id_banner)}}" enctype="multipart/form-data">
                     <div class="form-group">
                         @csrf
