@@ -13,18 +13,33 @@
          </div>
          <div class="card-body">
             <h5 class="card-title font-weight-bold" style="color: black;">Banners Apresentados</h5>
-            <ul class="list-group list-group-flush">
-                @foreach($bannersItens as $item)
-                    @if($item['banner_id'] == $banner['id'])
-                        @php
-                            $second = $item['seconds'] / 1000;
-                        @endphp
-                        <li class="list-group-item"><span class="font-weight-bold"> {{$item['name']}}</span> por {{ $second }} segundos.</li>
-                    @endif
-                @endforeach
-            </ul>
+             <table class="table table-striped">
+                 <tbody class="flex-center">
+
+                        @foreach($bannersItens as $item)
+                            @if($item['banner_id'] == $banner['id'])
+                                @php
+                                    $second = $item['seconds'] / 1000;
+                                @endphp
+
+                                <tr>
+                                    <td class="font-weight-bold" >{{ $item['name'] }}</td>
+                                    <td class="font-weight-bold">{{ $second }} segundos</td>
+                                    <td><a href="#"><img src="img/icons8-editar-64.png" width="26px" height="26px"></a></td>
+                                    <td>
+                                        <form action="{{url('delete/bannerItem', $item['id'])}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button style="text-decoration: none; border:none; background-color: #f2f2f2;" type="submit"><img src="img/icons8-cancelar-65.png" width="25px" height="25px"></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                 </tbody>
+             </table>
             <br/>
-            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn btn-primary">Adicionar Item</a>        <a href="{{ url('teste', $banner['id'])}}" class="btn btn-success">Ativar Banner</a>   <a href="#" class="btn btn-danger">Deletar Banner</a>
+            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn"><img src="img/adicionar.png" width="25px" height="25px"></a>  <a href="{{ url('ativar', $banner['id'])}}" class="btn"><img src="img/play.png"></a>  <a href="#" class="btn"><img src="img/icons8-excluir-48.png" width="25px" height="25px"></a>
 
          </div>
          <div class="card-footer text-muted" style="color: black;">

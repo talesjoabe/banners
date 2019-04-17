@@ -53,4 +53,18 @@ class BannerItensController extends Controller
 
 
     }
+
+    public function deleteBannerItem(BannerItens $bannerItens)
+    {
+        if ($bannerItens->delete())
+        {
+            return redirect('banners')->with('status', 'Item Banner deletado com sucesso!');
+
+        }
+        else
+        {
+            return redirect('banners')->with('error', 'Erro ao deletar Item Banner!');
+
+        }
+    }
 }

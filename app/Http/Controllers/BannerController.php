@@ -106,7 +106,7 @@ class BannerController extends Controller
         //
     }
 
-    public function teste(Banner $banner)
+    public function ativar(Banner $banner)
     {
         $bannersItens = BannerItens::where('banner_id', '=', $banner->id)->get();
 
