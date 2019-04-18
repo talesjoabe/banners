@@ -16,6 +16,7 @@ Route::get('/', 'BannerController@home');
 
 // Banners
 Route::resource('banners', 'BannerController');
+Route::get('banners/delete/{banner}', 'BannerController@deleteBanner');
 
 //Banners Itens
 Route::get('banners/itens/{banner}', 'BannerItensController@createForm');

@@ -38,7 +38,7 @@
                  
              </table>
             <br/>
-            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn"><img src="img/adicionar.png" width="25px" height="25px"></a>  <a href="{{ url('ativar', $banner['id'])}}" class="btn"><img src="img/play.png"></a>  <a href="#" class="btn"><img src="img/icons8-excluir-48.png" width="25px" height="25px"></a>
+            <a href="{{ url('banners/itens', $banner['id'])}}" class="btn"><img src="img/adicionar.png" width="25px" height="25px"></a>  <a href="{{ url('ativar', $banner['id'])}}" class="btn"><img src="img/play.png"></a>  <a href="{{ url('banners/delete', $banner['id'])}}" class="btn"><img src="img/icons8-excluir-48.png" width="25px" height="25px"></a>
 
          </div>
          <div class="card-footer text-muted" style="color: black;">

@@ -101,9 +101,31 @@ class BannerController extends Controller
      * @param  \App\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Banner $banner)
+    public function deleteBanner(Banner $banner)
     {
-        //
+        $itens = BannerItens::where('banner_id', '=', $banner->id)->get();
+        
+        foreach($itens as $item)
+        {
+            $excluirArquivo = unlink(base_path(). '/resources/views/htmls/'. $item['filename']);
+            if ($excluirArquivo) {
+                
+            }
+            else {
+                return redirect('banners')->with('error', 'Erro ao deletar arquivo de Banner.');
+
+            }
+        }
+        if ($banner->delete())
+            {
+                return redirect('banners')->with('status', 'Banner deletado com sucesso!');
+
+            }
+            else
+            {
+                return redirect('banners')->with('error', 'Erro ao deletar Banner.');
+
+            }
     }
 
     public function ativar(Banner $banner)
