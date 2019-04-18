@@ -33,12 +33,15 @@ class BannerItensController extends Controller
         $bannerItens->name = $request->get('name');
         $bannerItens->banner_id = $banner->id;
         $bannerItens->seconds = $request->get('seconds') * 1000;
-
-        if($request->hasfile('filename'))
+        $file = $request->file('filename');
+        $typefile = $file->getClientMimeType();
+        
+        if($request->hasfile('filename')==true && $typefile=="text/html")
         {
-            $file = $request->file('filename');
             $htmlOnlyName = explode('.html', $file->getClientOriginalName());
-            $name= time(). $htmlOnlyName[0] . '.blade.php';
+            $htmlname = $htmlOnlyName[0];
+            $htmlnamefinal = str_replace(' ', '', $htmlname);
+            $name= time(). $htmlnamefinal . '.blade.php';
             if($file->move(base_path().'/resources/views/htmls/', $name))
             {
                 $bannerItens->filename = $name;
@@ -47,8 +50,13 @@ class BannerItensController extends Controller
               return redirect('banners')->with('status', 'Item Banner cadastrado com sucesso!');
             }
             else {
-                return redirect('banners')->with('error', 'Erro ao cadastrar item!');
+                return redirect('banners')->with('error', 'Erro ao fazer upload do item!');
             }
+        }
+        else
+        {
+            return redirect('banners')->with('error', 'Arquivo não inserido ou inválido.');
+
         }
 
 

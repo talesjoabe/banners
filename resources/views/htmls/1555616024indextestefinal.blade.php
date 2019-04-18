@@ -5,7 +5,7 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <title>HTML 2</title>
+            <title>HTML 1</title>
 
             <!-- Fonts -->
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -70,9 +70,9 @@
 </head>
 <body>
 <div class="container">
-    <h1 style="text-align:center"> HTML 2 </h1>
+    <h1 style="text-align:center"> HTML 1 </h1>
 
-     <img src="https://www.geeksforgeeks.org/wp-content/uploads/html-768x256.png" alt="Minha imagem!" title="Imagem que aprendi a inserir em um documento HTML" vspace="10px" hspace="15px" border="10px" align="center"/>
+     <img src="https://cdn-images-1.medium.com/max/1600/1*28-1lYrYTQoLhi87mllgBw.png" alt="Minha imagem!" title="Imagem que aprendi a inserir em um documento HTML" vspace="10px" hspace="15px" border="10px" align="center"/>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

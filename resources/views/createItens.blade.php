@@ -19,15 +19,15 @@
                         @csrf
                         <label>Item Banner Name:</label>
                         <div class="form-group col-md-12">
-                            <input type="text"  name="name">
+                            <input type="text"  name="name" required>
                         </div>
                         <label>Item Banner Seconds:</label>
                         <div class="form-group col-md-12">
-                            <input type="number"  name="seconds">
+                            <input type="number"  name="seconds" required>
                         </div>
                         <label>Item Banner HTML:</label>
                         <div class="form-group col-md-8">
-                            <input type="file" name="filename">
+                            <input type="file" name="filename" accept="text/html" required>
                         </div>
                     </div>
                     <br>
