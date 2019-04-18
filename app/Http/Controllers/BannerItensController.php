@@ -55,15 +55,23 @@ class BannerItensController extends Controller
     }
 
     public function deleteBannerItem(BannerItens $bannerItens)
-    {
-        if ($bannerItens->delete())
-        {
-            return redirect('banners')->with('status', 'Item Banner deletado com sucesso!');
+    {   
+        $excluirArquivo = unlink(base_path(). '/resources/views/htmls/'. $bannerItens->filename);
+        if ($excluirArquivo) {
+            if ($bannerItens->delete())
+            {
+                return redirect('banners')->with('status', 'Item Banner deletado com sucesso!');
 
+            }
+            else
+            {
+                return redirect('banners')->with('error', 'Erro ao deletar Item Banner do banco de dados.');
+
+            }
         }
         else
         {
-            return redirect('banners')->with('error', 'Erro ao deletar Item Banner!');
+            return redirect('banners')->with('error', 'Erro ao excluir arquivo da pasta.');
 
         }
     }
