@@ -23,7 +23,7 @@
                         </div>
                         <label>Item Banner Seconds:</label>
                         <div class="form-group col-md-12">
-                            <input type="number"  name="seconds" required>
+                            <input type="number" min="1"  name="seconds" required>
                         </div>
                         <label>Item Banner HTML:</label>
                         <div class="form-group col-md-8">
