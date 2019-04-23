@@ -9,18 +9,18 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                CRIAR BANNER
+                CRIAR PAINEL
             </div>
     
             <div class="links">
                 <form method="post" action="{{route('banners.store')}}">
                     <div class="form-group">
                         @csrf
-                        <label>Banner Name:</label>
+                        <label>Painel Name:</label>
                         <input type="text" class="form-control" name="name"/>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Criar Banner</button>
+                    <button type="submit" class="btn btn-primary">Criar Painel</button>
                 </form>
             </div>
         </div>

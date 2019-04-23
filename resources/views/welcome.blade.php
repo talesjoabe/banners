@@ -18,12 +18,12 @@
             
             <div class="content">
                 <div class="title m-b-md">
-                    BANNER's
+                    Panel's
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('banners.create') }}">Criar Banner</a>
-                    <a href="{{route('banners.index')}}">Banner's</a>
+                    <a href="{{ route('banners.create') }}">Criar Painel</a>
+                    <a href="{{route('banners.index')}}">Painéis</a>
                 </div>
             </div>
         </div>

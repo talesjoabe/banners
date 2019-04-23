@@ -57,7 +57,7 @@ class BannerController extends Controller
             $banner->name = $request->get('name');
             $banner->save();
 
-            return redirect('/')->with('status', 'Banner cadastrado com sucesso!');
+            return redirect('/')->with('status', 'Painel cadastrado com sucesso!');
 
     }
 
@@ -112,18 +112,18 @@ class BannerController extends Controller
                 
             }
             else {
-                return redirect('banners')->with('error', 'Erro ao deletar arquivo de Banner.');
+                return redirect('banners')->with('error', 'Erro ao deletar arquivo de Painel.');
 
             }
         }
         if ($banner->delete())
             {
-                return redirect('banners')->with('status', 'Banner deletado com sucesso!');
+                return redirect('banners')->with('status', 'Painel deletado com sucesso!');
 
             }
             else
             {
-                return redirect('banners')->with('error', 'Erro ao deletar Banner.');
+                return redirect('banners')->with('error', 'Erro ao deletar Painel.');
 
             }
     }

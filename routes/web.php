@@ -17,7 +17,8 @@ Route::get('/', 'BannerController@home');
 // Banners
 Route::resource('banners', 'BannerController');
 Route::get('banners/delete/{banner}', 'BannerController@deleteBanner');
-
+Route::get('banners/editform/{bannerItens}', 'BannerItensController@updateForm');
+Route::put('banners/update/{bannerItens}', 'BannerItensController@updateItem');
 //Banners Itens
 Route::get('banners/itens/{banner}', 'BannerItensController@createForm');
 Route::post('banners/itens/{banner}', 'BannerItensController@createItem');

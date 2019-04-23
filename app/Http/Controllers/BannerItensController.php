@@ -47,7 +47,7 @@ class BannerItensController extends Controller
                 $bannerItens->filename = $name;
                 $bannerItens->save();
 
-              return redirect('banners')->with('status', 'Item Banner cadastrado com sucesso!');
+              return redirect('banners')->with('status', 'Item Painel cadastrado com sucesso!');
             }
             else {
                 return redirect('banners')->with('error', 'Erro ao fazer upload do item!');
@@ -68,18 +68,74 @@ class BannerItensController extends Controller
         if ($excluirArquivo) {
             if ($bannerItens->delete())
             {
-                return redirect('banners')->with('status', 'Item Banner deletado com sucesso!');
+                return redirect('banners')->with('status', 'Item Painel deletado com sucesso!');
 
             }
             else
             {
-                return redirect('banners')->with('error', 'Erro ao deletar Item Banner do banco de dados.');
+                return redirect('banners')->with('error', 'Erro ao deletar Item Painel do banco de dados.');
 
             }
         }
         else
         {
             return redirect('banners')->with('error', 'Erro ao excluir arquivo da pasta.');
+
+        }
+    }
+
+    public function updateForm(BannerItens $bannerItens)
+    {
+        $itemBanner = BannerItens::find($bannerItens->id);
+
+        return view('editItem', compact('itemBanner'));
+
+    }
+
+    public function updateItem(Request $request, $bannerItens)
+    {
+        $validateData = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'seconds' => 'required|integer'
+        ]);
+
+        $item = BannerItens::find($bannerItens); 
+          
+        
+          
+        if($request->hasfile('filename'))
+        {       
+                $file = $request->file('filename');
+                $typefile = $file->getClientMimeType();
+
+                if($typefile=="text/html")
+                {                
+                    unlink(base_path()."/resources/views/htmls/$item->filename");
+                    $htmlOnlyName = explode('.html', $file->getClientOriginalName());
+                    $htmlname = $htmlOnlyName[0];
+                    $htmlnamefinal = str_replace(' ', '', $htmlname);
+                    $name= time(). $htmlnamefinal . '.blade.php';
+                    if($file->move(base_path().'/resources/views/htmls/', $name))
+                    {
+                        $item->filename = $name;              
+                    }
+                }
+                else
+                {
+                    return redirect('banners')->with('error', 'Arquivo inválido.');
+                }
+        }
+
+        $item->name = $request->get('name');
+        $item->seconds = $request->get('seconds') * 1000;
+
+        if($item->save())
+        {
+            return redirect('banners')->with('status', 'Item Painel atualizado com sucesso!');
+
+        }
+        else{
+            return redirect('banners')->with('error', 'Erro ao atualizar Item Painel!');
 
         }
     }

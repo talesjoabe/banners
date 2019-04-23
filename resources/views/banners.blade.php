@@ -24,12 +24,12 @@
                                 <tr>
                                     <td class="font-weight-bold" >{{ $item['name'] }}</td>
                                     <td class="font-weight-bold">{{ $second }} segundos</td>
-                                    <td><a href="#"><img src="img/icons8-editar-64.png" width="26px" height="26px"></a></td>
+                                    <td><a href="{{ url('banners/editform', $item['id'])}}"><img src="img/icons8-editar-64.png" width="26px" height="26px"></a></td>
                                     <td>
                                         <form action="{{url('delete/bannerItem', $item['id'])}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button style="text-decoration: none; border:none; background-color: #f2f2f2;" type="submit"><img src="img/icons8-cancelar-65.png" width="25px" height="25px"></button>
+                                            <button style="text-decoration: none; border:none; background-color: transparent;" type="submit"><img src="img/icons8-cancelar-65.png" width="25px" height="25px"></button>
                                         </form>
                                     </td>
                                 </tr>
