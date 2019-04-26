@@ -16,15 +16,15 @@
                 </div>
             @endif
             
-            <div class="content">
-                <div class="title m-b-md">
-                    Panel's
-                </div>
+            <div class="content col-xs-12 col-sm-12 col-md-10 col-lg-8  col-xl-8 ">
 
-                <div class="links">
+                    <img src="img/paineis.jpg" class="img-fluid">
+
+                <div class=" links" style="color: black;">
                     <a href="{{ route('banners.create') }}">Criar Painel</a>
                     <a href="{{route('banners.index')}}">Painéis</a>
                 </div>
+
             </div>
         </div>
 @endsection

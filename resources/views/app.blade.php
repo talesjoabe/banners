@@ -50,6 +50,7 @@
 
                 .title {
                     font-size: 84px;
+                    margin-top: 15vh;
                 }
 
                 .links > a {
