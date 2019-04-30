@@ -28,11 +28,13 @@ class BannerItensController extends Controller
         $validateData = Validator::make(array_merge($request->all(), ['banner_id' => $banner->id]), [
             'name' => 'required|string|max:255',
             'banner_id' => 'required|integer|exists:banners,id',
-            'seconds' => 'required|integer'
+            'seconds' => 'required|integer',
+            'visible' => 'required|boolean'
         ]);
         $bannerItens->name = $request->get('name');
         $bannerItens->banner_id = $banner->id;
         $bannerItens->seconds = $request->get('seconds') * 1000;
+        $bannerItens->visible = $request->get('visible');
         $file = $request->file('filename');
         $typefile = $file->getClientMimeType();
         
@@ -138,5 +140,39 @@ class BannerItensController extends Controller
             return redirect('banners')->with('error', 'Erro ao atualizar Item Painel!');
 
         }
+    }
+
+
+    public function visibleBannerItem(BannerItens $bannerItens)
+    {
+        $bannerItens->visible = TRUE;
+
+        if ($bannerItens->save())
+        {
+            return redirect('banners')->with('status', 'Item Painel visível!');
+        }
+        else
+        {
+            return redirect('banners')->with('error', 'Erro ao atualizar Item Painel!');
+
+        }
+
+    }
+
+
+    public function invisibleBannerItem(BannerItens $bannerItens)
+    {
+        $bannerItens->visible = FALSE;
+
+        if ($bannerItens->save())
+        {
+            return redirect('banners')->with('status', 'Item Painel ocultado!');
+        }
+        else
+        {
+            return redirect('banners')->with('error', 'Erro ao atualizar Item Painel!');
+
+        }
+
     }
 }

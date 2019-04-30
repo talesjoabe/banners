@@ -19,6 +19,7 @@ class CreateBannersItensTable extends Migration
             $table->string('name');
             $table->string('filename');
             $table->integer('seconds')->unsigned();
+            $table->boolean('visible');
             $table->timestamps();
 
             $table->foreign('banner_id')->references('id')->on('banners')->onDelete('cascade');

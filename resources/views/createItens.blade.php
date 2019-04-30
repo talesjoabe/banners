@@ -25,6 +25,13 @@
                         <div class="form-group col-md-12">
                             <input type="number" min="1"  name="seconds" required>
                         </div>
+                        <label>Visível:</label>
+                        <div class="form-group col-md-12">
+                            <select name="visible" required>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                        </div>
                         <label>Item Banner HTML:</label>
                         <div class="form-group col-md-8">
                             <input type="file" name="filename" accept="text/html" required>

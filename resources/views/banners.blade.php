@@ -32,6 +32,18 @@
                                             <button style="text-decoration: none; border:none; background-color: transparent;" type="submit"><img src="img/icons8-cancelar-65.png" width="25px" height="25px"></button>
                                         </form>
                                     </td>
+                                    <td>
+                                        @php
+                                            if($item['visible'])
+                                            {
+                                                echo "<a href='#'> <img src='img/visivel.png' width='26px' height='26px'></a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<a href='#'> <img src='img/invisivel.png' width='26px' height='26px'></a>";
+                                            }
+                                        @endphp
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach

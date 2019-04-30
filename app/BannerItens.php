@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BannerItens extends Model
 {
     protected $fillable = [
-       'name', 'banner_id'
+       'name', 'banner_id', 'seconds', 'visible'
     ]; 
 
     public function banner(): BelongsTo
