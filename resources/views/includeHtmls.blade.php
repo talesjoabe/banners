@@ -13,7 +13,7 @@
         };
     </script>
     @php
-        $timeInitial = 0;
+        $timeInitial = 1000;
         $timeFinaly = 0;
     @endphp
     @foreach($bannersItens as $itemBanner)
