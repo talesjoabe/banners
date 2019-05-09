@@ -26,3 +26,4 @@ Route::get('ativar/{banner}', 'BannerController@ativar');
 Route::delete('delete/bannerItem/{bannerItens}', 'BannerItensController@deleteBannerItem');
 Route::get('banners/itens/visible/{bannerItens}', 'BannerItensController@visibleBannerItem');
 Route::get('banners/itens/invisible/{bannerItens}', 'BannerItensController@invisibleBannerItem');
+Route::get('tes', 'BannerItensController@teste');

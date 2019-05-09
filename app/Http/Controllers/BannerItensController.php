@@ -6,6 +6,7 @@ use App\Banner;
 use App\BannerItens;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 class BannerItensController extends Controller
 {
@@ -44,10 +45,11 @@ class BannerItensController extends Controller
             $htmlname = $htmlOnlyName[0];
             $htmlnamefinal = str_replace(' ', '', $htmlname);
             $name= time(). $htmlnamefinal . '.blade.php';
-            if($file->move(base_path().'/resources/views/htmls/', $name))
+            if( (Storage::disk('s3')->put($name, file_get_contents($file))))
             {
                 $bannerItens->filename = $name;
                 $bannerItens->save();
+
 
               return redirect('banners')->with('status', 'Item Painel cadastrado com sucesso!');
             }
@@ -66,7 +68,7 @@ class BannerItensController extends Controller
 
     public function deleteBannerItem(BannerItens $bannerItens)
     {   
-        $excluirArquivo = unlink(base_path(). '/resources/views/htmls/'. $bannerItens->filename);
+        $excluirArquivo = Storage::delete($bannerItens->filename);
         if ($excluirArquivo) {
             if ($bannerItens->delete())
             {
@@ -81,7 +83,7 @@ class BannerItensController extends Controller
         }
         else
         {
-            return redirect('banners')->with('error', 'Erro ao excluir arquivo da pasta.');
+            return redirect('banners')->with('error', 'Erro ao excluir arquivo do S3.');
 
         }
     }
@@ -111,13 +113,13 @@ class BannerItensController extends Controller
                 $typefile = $file->getClientMimeType();
 
                 if($typefile=="text/html")
-                {                
-                    unlink(base_path()."/resources/views/htmls/$item->filename");
+                {
+                    Storage::delete($item->filename);
                     $htmlOnlyName = explode('.html', $file->getClientOriginalName());
                     $htmlname = $htmlOnlyName[0];
                     $htmlnamefinal = str_replace(' ', '', $htmlname);
                     $name= time(). $htmlnamefinal . '.blade.php';
-                    if($file->move(base_path().'/resources/views/htmls/', $name))
+                    if( (Storage::disk('s3')->put($name, file_get_contents($file))))
                     {
                         $item->filename = $name;              
                     }
@@ -174,5 +176,12 @@ class BannerItensController extends Controller
 
         }
 
+    }
+
+    public function teste()
+    {
+        $tes = Storage::get('1557429579caneta.blade.php');
+
+        return  $tes;
     }
 }
