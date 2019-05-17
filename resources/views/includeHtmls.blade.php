@@ -1,25 +1,34 @@
-    <script>
-        function keyPressed(evt){
-            evt = evt || window.event;
-            var key = evt.keyCode || evt.which;
-            return String.fromCharCode(key); 
-        }
+{{--    <script>--}}
+{{--        function keyPressed(evt){--}}
+{{--            evt = evt || window.event;--}}
+{{--            var key = evt.keyCode || evt.which;--}}
+{{--            return String.fromCharCode(key); --}}
+{{--        }--}}
 
-        document.onkeypress = function(evt) {
-            var str = keyPressed(evt);
-            
-            if(str == '1')
-            window.location.href = "http://localhost:8000";
-        };
-    </script>
-
+{{--        document.onkeypress = function(evt) {--}}
+{{--            var str = keyPressed(evt);--}}
+{{--            --}}
+{{--            if(str == '1')--}}
+{{--            window.location.href = "http://localhost:8000";--}}
+{{--        };--}}
+{{--    </script>--}}
+    @php
+        $timeInitial = 0;
+        $timeFinaly = 0;
+    @endphp
     @foreach($bannersItens as $itemBanner)
+
             @php
                 $nameItem = explode('.blade.php', $itemBanner['filename']);
                 $name = $nameItem[0];
+                $timeFinaly = $timeFinaly + $itemBanner['seconds'];
+                $html = \Illuminate\Support\Facades\Storage::get($itemBanner['filename']);
+
             @endphp
             <div id={{$name}} style="display:none">
-                @include('htmls.'. $nameItem[0])
+                @php
+                    echo $html;
+                @endphp
             </div>
 
     @endforeach
